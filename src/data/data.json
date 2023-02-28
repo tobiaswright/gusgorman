@@ -1,0 +1,156 @@
+[
+    {
+      "name": "Helen Harris",
+      "alias": "Aech",
+      "title": "Ready Player One",
+      "media": "movie",
+      "actor": "Lena Waithe"
+    },
+    {
+      "name": "Alec Hardison",
+      "alias": "",
+      "title": "Leverage",
+      "media": "television",
+      "actor": "Aldis Hodge"
+    },
+    {
+      "name": "Brody Nelson",
+      "alias": "",
+      "title": "CSI: Cyber",
+      "media": "television",
+      "actor": "Shad Moss"
+    },
+    {
+      "name": "Victor Stone",
+      "alias": "Cyborg",
+      "title": "Justice League",
+      "media": "movie",
+      "actor": "Ray Fisher"
+    },
+    {
+      "name": "Glen Whitmann",
+      "alias": "",
+      "title": "Transformers",
+      "media": "movie",
+      "actor": "Anthony Anderson"
+    },
+    {
+      "name": "Gus Gorman",
+      "alias": "",
+      "title": "Superman III",
+      "media": "movie",
+      "actor": "Richard Pryor"
+    },
+    {
+      "name": "",
+      "alias": "Hush",
+      "title": "Escape Plan",
+      "media": "movie",
+      "actor": "50 Cent"
+    },
+    {
+      "name": "Johnny Storm",
+      "alias": "Human Torch",
+      "title": "Fantastic Four",
+      "media": "movie",
+      "actor": "Michael B. Jordan"
+    },
+    {
+      "name": "Leslie Romero",
+      "alias": "",
+      "title": "Mr. Robot",
+      "media": "television",
+      "actor": "Ron Cephas Jones"
+    },
+    {
+      "name": "Leon Rollins",
+      "alias": "Latrell Walker",
+      "title": "Exit Wounds",
+      "media": "movie",
+      "actor": "Earl 'DMX' Simmons"
+    },
+    {
+      "name": "Paul Cook",
+      "alias": "Lord Nikon",
+      "title": "Hackers",
+      "media": "movie",
+      "actor": "Laurence Mason"
+    },
+    {
+      "name": "Lucius Fox",
+      "alias": "",
+      "title": "Batman Returns",
+      "media": "movie",
+      "actor": "Morgan Freeman"
+    },
+    {
+      "name": "Luthor Stickell",
+      "alias": "",
+      "title": "Mission: Impossible",
+      "media": "movie",
+      "actor": "Ving Rhames"
+    },
+    {
+      "name": "",
+      "alias": "Morpheus",
+      "title": "The Matrix",
+      "media": "movie",
+      "actor": "Laurence Fishburne"
+    },
+    {
+      "name": "",
+      "alias": "Niobe",
+      "title": "The Matrix",
+      "media": "movie",
+      "actor": "Jada Pinkett Smith"
+    },
+    {
+      "name": "Ramsey",
+      "alias": "",
+      "title": "Fast and Furious",
+      "media": "movie",
+      "actor": "Nathalie Emmanuel"
+    },
+    {
+      "name": "Riley Davis",
+      "alias": "",
+      "title": "McGyver",
+      "media": "television",
+      "actor": "Tristin Mays"
+    },
+    {
+      "name": "Shuri",
+      "alias": "",
+      "title": "Black Panther",
+      "media": "movie",
+      "actor": "Letitia Wright"
+    },
+    {
+      "name": "Steve",
+      "alias": "",
+      "title": "Office Space",
+      "media": "movie",
+      "actor": "Orlando Jones"
+    },
+    {
+      "name": "",
+      "alias": "Tank",
+      "title": "The Matrix",
+      "media": "movie",
+      "actor": "Marcus Chong"
+    },
+    {
+      "name": "Theo",
+      "alias": "",
+      "title": "Die Hard",
+      "media": "movie",
+      "actor": "Clarence Gilyar"
+    },
+    {
+      "name": "",
+      "alias": "Link",
+      "title": "The Matrix",
+      "media": "movie",
+      "actor": "Harold Perrineau"
+    }
+  ]
