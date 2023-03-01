@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
-// import data from '../data/data.json'
+import Card from '../components/Card.astro'
+import items from '../data/data.json';
 ---
 
 <Layout title="Welcome to GusGorman.com">
@@ -8,7 +9,12 @@ import Layout from '../layouts/Layout.astro';
 		<h1>Welcome to <span class="text-gradient">GusGorman.com</span></h1>
 		<h2>A list of black programers, hackers and computer specialist in film and television.</h2>
 	</main>
-	<div id="content"></div>
+	<ul id="content">
+		{items.map((item) => (
+			<li><Card {...item} /></li>
+		))}
+		
+	</ul>
 </Layout>
 
 <style>
@@ -55,46 +61,3 @@ import Layout from '../layouts/Layout.astro';
 		padding: 0;
 	}
 </style>
-
-<script>
-import data from '../data/data.json';
-
-
-console.log("allllloooooo1", data)
-
-const content = document.getElementById('content');
-// const loader = document.getElementById('loader');
-
-//puts together the character block 32 45 107 110
-const entry = (entry) => {
-    return `
-        <h3>${entry.alias || entry.name}</h3>
-        <h4>${entry.media.name}</h4>
-        <h5>Actor: ${entry.actor}</h5>
-    `
-
-	
-}
-
-data.forEach(item => {
-	content.innerHTML += entry(item)
-});
-
-
-// fetch('https://aahack-function3.azurewebsites.net/api/getHackers?code=9wQc/ZrC1uRcuoFyhTsv21N2VV/fcrBDY9oomNhcFWg8pz3uPaIeiA==')
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(data) {
-//     //adds the character blocks to the dom
-//     Object.keys(data).forEach((item) => {
-//       if (!images[item]) {
-//         return
-//       }
-//        content.innerHTML += entry(data[item])
-//     });
-  
-//     content.classList.remove('is-paused');
-//     loader.classList.add('hide');
-//   });
-</script>

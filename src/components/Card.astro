@@ -1,24 +1,21 @@
 ---
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+	name?: string;
+    alias?: string;
+    title: string;
+    media: string;
+    actor: string
 }
 
-const { href, title, body } = Astro.props;
+const { alias, name, media, actor } = Astro.props;
+
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
+<h3>{alias || name}</h3>
+<h4>{media}</h4>
+<h5>Actor: {actor}</h5>
+
+
 <style>
 	.link-card {
 		list-style: none;
