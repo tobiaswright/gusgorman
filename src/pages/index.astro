@@ -5,13 +5,13 @@ import items from '../data/data.json';
 ---
 
 <Layout title="Welcome to GusGorman.com">
-	<main>
-		<h1>Welcome to GusGorman.com</h1>
-		<h2>A list of black programers, hackers and computer specialist in film and television.</h2>
+	<main class="container mx-auto">
+		<h1 class="text-3xl mt-10">Welcome to GusGorman.com</h1>
+		<h2 class="text-2xl">A list of black programers, hackers and computer specialist in film and television.</h2>
 	
-	<ul id="content">
+	<ul id="content" class="mt-10">
 		{items.map((item) => (
-			<li><Card {...item} /></li>
+			<li class="mt-5"><Card {...item} /></li>
 		))}
 		
 	</ul>
