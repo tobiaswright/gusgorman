@@ -16,9 +16,9 @@ let transformName = (name: string): string => {
 
 let constructImagePath = (): string => {
   if (alias) {
-    return "/images/" + transformName(alias) + ".jpg";
+    return "./images/" + transformName(alias) + ".jpg";
   }
-  return "/images/" + transformName(name as string) + ".jpg";
+  return "./images/" + transformName(name as string) + ".jpg";
 };
 
 const imageSrc = constructImagePath();
