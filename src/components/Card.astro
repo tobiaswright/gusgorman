@@ -1,25 +1,31 @@
 ---
 export interface Props {
-	name?: string;
-    alias?: string;
-    title: string;
-    media: string;
-    actor: string
+  name?: string;
+  alias?: string;
+  title: string;
+  media: string;
+  actor: string;
 }
 
 const { alias, name, title, media, actor } = Astro.props;
 
-let imgName = ""
-if (alias) {
-    imgName = "/images/"+ alias.split(" ").join("-").toLowerCase() + ".jpg"
-} else {
-    imgName = "/images/" + name?.split(" ").join("-").toLowerCase() + ".jpg"
-}
----
 
-<h3>{alias || name} in {title}</h3>
+let transformName = (name: string): string => {
+    return name.split(" ").join("-").toLowerCase()
+}
+
+let constructImagePath = (): string => {
+  if (alias) {
+    return "/images/" + transformName(alias) + ".jpg";
+  }
+  return "/images/" + transformName(name as string) + ".jpg";
+};
+
+const imageSrc = constructImagePath();
+---
+<li><img src={imageSrc} /></li>
+<h3 class="text-lg">{alias || name} in {title}</h3>
 <ul>
-    <li><img src={imgName}></li>
-	<li>Media: {media}</li>
-	<li>Portrayed by: {actor}</li>
+  <li class="text-sm">Media: {media}</li>
+  <li class="text-sm">Portrayed by: {actor}</li>
 </ul>

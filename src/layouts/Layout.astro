@@ -6,7 +6,9 @@ export interface Props {
 
 const { title, page } = Astro.props;
 
-let home, table, about = "";
+let home = "text-sky-50 underline hover:text-yellow-100 underline";
+let table = home
+let about = home
 if ( page === "home") {
 	home = "font-bold"
 }
@@ -16,8 +18,6 @@ if ( page === "table") {
 if ( page === "about") {
 	about = "font-bold"
 }
-
-
 ---
 
 <!DOCTYPE html>
@@ -30,9 +30,9 @@ if ( page === "about") {
 		<title>{title}</title>
 	</head>
 	<body class="bg-black text-white">
-		<main class="container mx-auto">
+		<main class="container mx-auto mb-20 w-[800px]">
 			<h1 class="text-3xl mt-10">Welcome to GusGorman.com</h1>
-			<h2 class="text-2xl mb-5">A list of black programers, hackers and computer specialist in film and television.</h2>
+			<h2 class="text-2xl mb-5">A list of black programmers, hackers and computer specialist in film and television.</h2>
 			
 			<ul class="divide-x mb-10">
 				<li class="inline pr-5 "><a class={home} href="/">Home</a></li>
@@ -41,7 +41,6 @@ if ( page === "about") {
 			</ul>
 
 			<slot />
-
 		</main>	
 	</body>
 </html>
