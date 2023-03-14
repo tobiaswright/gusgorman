@@ -2,14 +2,32 @@
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import items from '../data/data.json';
+
+items.sort((a, b) => {
+	let nameA = a.alias ? a.alias!.toLowerCase() : a.name!.toLowerCase();
+	let nameB = b.alias ? b.alias!.toLowerCase() : b.name!.toLowerCase();
+
+	return nameA.localeCompare(nameB)
+})
+
 ---
 
 <Layout title="Welcome to GusGorman.com" page="home">
 
-	<ul >
+	<ul>
 		{items.map((item) => (
 			<li class="mb-10"><Card {...item} /></li>
 		))}
 	</ul>
 
+	<template>
+		<ul>
+			<li class="mb-10"><Card /></li>
+		</ul>
+	</template>
+
 </Layout>
+
+<script define:vars={{items}}>
+	console.log(items)
+</script>
