@@ -1,0 +1,23 @@
+---
+export interface Props {
+    items: Items[]
+}
+
+interface Items {
+	name?: string;
+    alias?: string;
+    title?: string;
+    media?: string;
+    actor?: string
+}
+
+import Card from '../components/Card.astro';
+
+const { items } = Astro.props;
+---
+
+<ul>
+    {items.map((item) => (
+        <li class="mb-10"><Card {...item} /></li>
+    ))}
+</ul>

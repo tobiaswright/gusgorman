@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import List from '../components/List.astro';
 import items from '../data/data.json';
 
+//sort by ascending
 items.sort((a, b) => {
 	let nameA = a.alias ? a.alias!.toLowerCase() : a.name!.toLowerCase();
 	let nameB = b.alias ? b.alias!.toLowerCase() : b.name!.toLowerCase();
@@ -10,24 +11,23 @@ items.sort((a, b) => {
 	return nameA.localeCompare(nameB)
 })
 
+const sortedItems = {
+	asc: items,
+	desc: [...items].reverse()
+}
+
 ---
 
 <Layout title="Welcome to GusGorman.com" page="home">
 
-	<ul>
-		{items.map((item) => (
-			<li class="mb-10"><Card {...item} /></li>
-		))}
-	</ul>
+	<List items={items}  />
 
 	<template>
-		<ul>
-			<li class="mb-10"><Card /></li>
-		</ul>
+		<List items={[{}]}  />
 	</template>
 
 </Layout>
 
-<script define:vars={{items}}>
-	console.log(items)
+<script define:vars={{sortedItems}}>
+	console.log(sortedItems)
 </script>
