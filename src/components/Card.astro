@@ -43,7 +43,7 @@ let GetInfo = (): GetInfo => {
 let { id, imageSrc, charName } = GetInfo();
 ---
 
-<img src={imageSrc} id={id} />
+<img class="w-auto" src={imageSrc} id={id} />
 <h3 class="text-lg">{charName} in {title}</h3>
 <ul>
   <li class="text-sm">Media: {media}</li>
