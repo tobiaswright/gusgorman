@@ -7,27 +7,44 @@ export interface Props {
   actor?: string;
 }
 
-const { alias, name, title, media, actor } = Astro.props;
-
-
-let transformName = (name: string): string => {
-    return name.split(" ").join("-").toLowerCase()
+interface GetInfo {
+  id: string;
+  imageSrc: string;
+  charName: string;
 }
 
-let constructImagePath = (): string => {
-  if (alias) {
-    return "./images/" + transformName(alias) + ".jpg";
-  }
-  if (name) {
-    return "./images/" + transformName(name as string) + ".jpg";
-  }
-  return "";
+const { alias, name, title, media, actor } = Astro.props;
+
+let transformName = (name: string): string => {
+  return name.split(" ").join("-").toLowerCase();
 };
 
-const imageSrc = constructImagePath();
+let returnPayload = (charName: string): GetInfo => {
+  let id = transformName(charName);
+  let imageSrc = "./images/" + id + ".jpg";
+  return { id, imageSrc, charName };
+};
+
+let GetInfo = (): GetInfo => {
+  let id = "";
+  let imageSrc = "";
+  let charName = "";
+
+  if (alias) {
+    return returnPayload(alias);
+  }
+  if (name) {
+    return returnPayload(name);
+  }
+
+  return { id, imageSrc, charName };
+};
+
+let { id, imageSrc, charName } = GetInfo();
 ---
-<img src={imageSrc} />
-<h3 class="text-lg">{alias || name} in {title}</h3>
+
+<img class="w-auto" src={imageSrc} id={id} />
+<h3 class="text-lg">{charName} in {title}</h3>
 <ul>
   <li class="text-sm">Media: {media}</li>
   <li class="text-sm">Portrayed by: {actor}</li>
