@@ -16,7 +16,7 @@ import Card from '../components/Card.astro';
 const { items } = Astro.props;
 ---
 
-<ul>
+<ul id="list">
     {items.map((item) => (
         <li class="mb-10"><Card {...item} /></li>
     ))}
