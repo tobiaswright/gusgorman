@@ -19,28 +19,42 @@ let transformName = (name: string): string => {
   return name.split(" ").join("-").toLowerCase();
 };
 
-let returnPayload = (charName: string): GetInfo => {
+let getImage = async (id: string) => {
+  const images = await Astro.glob("../../public/images/*").then(files => {
+  return files.map(file => file.default)
+})
+
+for (let image of images) {
+  if (id +".jpg" === image.slice(15)) return "./images/" + id + ".jpg";
+}
+
+return "./images/placeholder.jpg";
+}
+
+let returnPayload = async (charName: string): Promise<GetInfo> => {
   let id = transformName(charName);
-  let imageSrc = "./images/" + id + ".jpg";
+  let imageSrc =  await getImage(id);
   return { id, imageSrc, charName };
 };
 
-let GetInfo = (): GetInfo => {
+let GetInfo = async (): Promise<GetInfo> => {
   let id = "";
   let imageSrc = "";
   let charName = "";
 
   if (alias) {
-    return returnPayload(alias);
+    return await returnPayload(alias);
   }
   if (name) {
-    return returnPayload(name);
+    return await returnPayload(name);
   }
 
   return { id, imageSrc, charName };
 };
 
-let { id, imageSrc, charName } = GetInfo();
+let { id, imageSrc, charName } = await GetInfo();
+
+
 ---
 
 <img class="w-auto" src={imageSrc} id={id} />
