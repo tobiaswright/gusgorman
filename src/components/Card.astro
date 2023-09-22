@@ -24,8 +24,9 @@ let getImage = async (id: string) => {
   return files.map(file => file.default)
 })
 
+
 for (let image of images) {
-  if (id +".jpg" === image.slice(15)) return "./images/" + id + ".jpg";
+    if (image.includes(id)) return "./images/"+id+".jpg";
 }
 
 return "./images/placeholder.jpg";
