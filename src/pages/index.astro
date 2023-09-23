@@ -10,6 +10,8 @@ items.sort((a, b) => {
 
 	return nameA.localeCompare(nameB)
 })
+
+
 ---
 
 <Layout title="Welcome to GusGorman.com" page="home">
@@ -25,7 +27,7 @@ items.sort((a, b) => {
 	<List items={items} />
 
 	<template id="desc">
-		<List items={[...items].reverse()} />
+	<List items={[...items].reverse()} />
 	</template>
 
 </Layout>

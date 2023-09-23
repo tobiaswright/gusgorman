@@ -1,6 +1,6 @@
 ---
 export interface Props {
-    items: Items[]
+    items: [Items]
 }
 
 interface Items {
@@ -8,12 +8,50 @@ interface Items {
     alias?: string;
     title?: string;
     media?: string;
-    actor?: string
+    actor?: string;
+    id?: string; 
+    imageSrc?: string;
+    charName?: string;
 }
 
 import Card from '../components/Card.astro';
 
 const { items } = Astro.props;
+
+let transformName = (name: string): string => {
+  return name.split(" ").join("-").toLowerCase();
+};
+
+let getImage = async (id: string) => {
+    let images = await Astro.glob("../../public/images/*").then(files => {
+        return files.map(file => file.default)
+    })
+
+    for (let image of images) {
+        if (image.includes(id)) return "./images/"+id+".jpg";
+    }
+
+    return "./images/placeholder.jpg";
+}
+
+let returnPayload = async (charName: string): Promise<any> => {
+  let id = transformName(charName);
+  let imageSrc =  await getImage(id);
+  return { id, imageSrc, charName };
+};
+
+items.forEach( async (item) => {
+    let temp;
+    if (item.alias) {
+        temp =  await returnPayload(item.alias);
+    }
+    if (item.name) {
+        temp = await returnPayload(item.name);
+    }
+    item["imageSrc"] = temp.imageSrc
+    item["charName"] =temp.charName
+})
+
 ---
 
 <ul id="list">
