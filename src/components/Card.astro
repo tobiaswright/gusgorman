@@ -1,11 +1,13 @@
 ---
 export interface Props {
-  name?: string;
-  title?: string;
-  media?: string;
-  actor?: string;
-  imageSrc: string;
-  charName: string;
+	name?: string;
+    alias?: string;
+    title: string;
+    media: string;
+    actor: string;
+    id: string; 
+    imageSrc: string;
+    charName: string;
 }
 
 const { name, title, media, actor, charName, imageSrc } = Astro.props;;

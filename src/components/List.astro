@@ -1,17 +1,13 @@
 ---
-export interface Props {
-    items: [Items]
-}
-
 interface Items {
 	name?: string;
     alias?: string;
-    title?: string;
-    media?: string;
-    actor?: string;
-    id?: string; 
-    imageSrc?: string;
-    charName?: string;
+    title: string;
+    media: string;
+    actor: string;
+    id: string; 
+    imageSrc: string;
+    charName: string;
 }
 
 import Card from '../components/Card.astro';
@@ -40,7 +36,7 @@ let returnPayload = async (charName: string): Promise<any> => {
   return { id, imageSrc, charName };
 };
 
-items.forEach( async (item) => {
+items.forEach( async (item: Items) => {
     let temp;
     if (item.alias) {
         temp =  await returnPayload(item.alias);
@@ -55,7 +51,7 @@ items.forEach( async (item) => {
 ---
 
 <ul id="list">
-    {items.map((item) => (
+    {items.map((item: Items) => (
         <li class="mb-10"><Card {...item} /></li>
     ))}
 </ul>

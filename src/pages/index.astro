@@ -2,6 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 import List from '../components/List.astro';
 import items from '../data/data.json';
+import type About from './about.astro';
+
+export interface Props {
+    items: [Items]
+}
+
+interface Items {
+	name?: string;
+    alias?: string;
+    title: string;
+    media: string;
+    actor: string;
+    id: string; 
+    imageSrc: string;
+    charName: string;
+}
 
 //sort by ascending
 items.sort((a, b) => {
@@ -10,8 +26,6 @@ items.sort((a, b) => {
 
 	return nameA.localeCompare(nameB)
 })
-
-
 ---
 
 <Layout title="Welcome to GusGorman.com" page="home">
@@ -35,18 +49,17 @@ items.sort((a, b) => {
 <script>
 
 	const sortButton = document.querySelector("button");
-	const list = document.querySelector("#list");
+	const list = document.querySelector("#list") as HTMLInputElement;
 	let showDefault = true;
-	const acsList = list?.innerHTML
-	const descList = document.querySelector("#desc")?.innerHTML
+	const acsList = list.innerHTML
+	const tempDescList = document.querySelector("#desc") as HTMLInputElement
+	const descList = tempDescList.innerHTML
 	// let template = document.getElementsByTagName("template");
 
 	sortButton?.addEventListener("click", ()=>{
-		
 		let listToDisplay = (!showDefault) ?  acsList : descList;
 		showDefault = !showDefault;
 		list.innerHTML = listToDisplay;
-		console.log(listToDisplay)
 	})
 
 </script>
