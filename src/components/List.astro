@@ -6,51 +6,51 @@ interface Items {
     media: string;
     actor: string;
     id: string; 
-    imageSrc: string;
-    charName: string;
+    imageSrc?: string;
+    charName?: string;
 }
 
 import Card from '../components/Card.astro';
 
 const { items } = Astro.props;
 
+let images = await Astro.glob("../../public/images/*").then(files => {
+        return files.map(file => file.default)
+})
+
+
 let transformName = (name: string): string => {
   return name.split(" ").join("-").toLowerCase();
 };
 
-let getImage = async (id: string) => {
-    let images = await Astro.glob("../../public/images/*").then(files => {
-        return files.map(file => file.default)
-    })
-
+let getImage = (id: string) => {
     for (let image of images) {
-        if (image.includes(id)) return "./images/"+id+".jpg";
+        if (image.src.includes(id)) return "./images/"+id+".jpg";
     }
-
     return "./images/placeholder.jpg";
 }
 
-let returnPayload = async (charName: string): Promise<any> => {
+let returnPayload = (charName: string) => {
   let id = transformName(charName);
-  let imageSrc =  await getImage(id);
+  let imageSrc = getImage(id);
   return { id, imageSrc, charName };
 };
 
-let getItems = async (items:[Items]) => {
-    items.forEach( async (item: Items) => {
+let getItems =  (items:[Items]) => {
+    items.forEach(  (item: Items) => {
+        let temp;
+        if (item.alias) {
+            temp =  returnPayload(item.alias);
+        }
+        if (item.name) {
+            temp = returnPayload(item.name);
+        }
+        item["imageSrc"] = temp?.imageSrc
+        item["charName"] =temp?.charName 
 
-    let temp;
-    if (item.alias) {
-        temp =  await returnPayload(item.alias);
-    }
-    if (item.name) {
-        temp = await returnPayload(item.name);
-    }
-    item["imageSrc"] = temp.imageSrc
-    item["charName"] =temp.charName 
-})
+    })
 
-return items
+    return items
 }
 
 let cards = await getItems(items);
@@ -58,7 +58,7 @@ let cards = await getItems(items);
 ---
 
 <ul id="list">
-    {cards.map( (card: Items) => (
+    {cards.map( async (card: Items) => (
         <li class="mb-10"><Card {...card} /></li>
     ))}
 </ul>

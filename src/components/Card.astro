@@ -6,11 +6,11 @@ export interface Props {
     media: string;
     actor: string;
     id: string; 
-    imageSrc: string;
-    charName: string;
+    imageSrc?: string;
+    charName?: string;
 }
 
-const { name, title, media, actor, charName, imageSrc } = Astro.props;;
+const { name, title, media, actor, charName, imageSrc } = Astro.props;
 
 ---
 
