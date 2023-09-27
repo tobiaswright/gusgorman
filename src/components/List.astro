@@ -54,9 +54,7 @@ let getItems =  (items:[Items]) => {
 }
 
 let cards = await getItems(items);
-
 ---
-
 <ul id="list">
     {cards.map( async (card: Items) => (
         <li class="mb-10"><Card {...card} /></li>
