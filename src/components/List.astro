@@ -36,7 +36,9 @@ let returnPayload = async (charName: string): Promise<any> => {
   return { id, imageSrc, charName };
 };
 
-items.forEach( async (item: Items) => {
+let getItems = async (items:[Items]) => {
+    items.forEach( async (item: Items) => {
+
     let temp;
     if (item.alias) {
         temp =  await returnPayload(item.alias);
@@ -45,13 +47,18 @@ items.forEach( async (item: Items) => {
         temp = await returnPayload(item.name);
     }
     item["imageSrc"] = temp.imageSrc
-    item["charName"] =temp.charName
+    item["charName"] =temp.charName 
 })
+
+return items
+}
+
+let cards = await getItems(items);
 
 ---
 
 <ul id="list">
-    {items.map((item: Items) => (
-        <li class="mb-10"><Card {...item} /></li>
+    {cards.map( (card: Items) => (
+        <li class="mb-10"><Card {...card} /></li>
     ))}
 </ul>
