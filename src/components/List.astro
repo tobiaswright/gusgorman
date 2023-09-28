@@ -41,22 +41,22 @@ let getItems =  (items:[Items]) => {
         let temp;
         if (item.alias) {
             temp =  returnPayload(item.alias);
-        }
-        if (item.name) {
+        } else if (item.name) {
             temp = returnPayload(item.name);
         }
         item["imageSrc"] = temp?.imageSrc
         item["charName"] =temp?.charName 
-
     })
 
     return items
 }
 
-let cards = await getItems(items);
+let cards = getItems(items);
+
+console.log(cards)
 ---
 <ul id="list">
-    {cards.map( async (card: Items) => (
+    {cards.map( (card: Items) => (
         <li class="mb-10"><Card {...card} /></li>
     ))}
 </ul>
