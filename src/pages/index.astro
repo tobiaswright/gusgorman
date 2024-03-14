@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import List from '../components/List.astro';
-import items from '../data/data.json';
-import type About from './about.astro';
+// import items from '../data/data.json';
 
 export interface Props {
     items: [Items]
@@ -18,6 +17,13 @@ interface Items {
     imageSrc: string;
     charName: string;
 }
+
+let getData = async function() {
+	const result =  await fetch("https://raw.githubusercontent.com/tobiaswright/gusgorman/main/src/data/data.json").then(res => res.json());
+	return result
+}
+
+let items: [Items] = await getData();
 
 //sort by ascending
 items.sort((a, b) => {
