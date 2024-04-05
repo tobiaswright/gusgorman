@@ -31,41 +31,41 @@ Leslie,Nine Ball,Ocean's 8,film,Rihanna
 Bernard Lowe,,Westworld,television,Jeffrey Wright
 John Raymond 'Ray' Arnold,,Jurrasic Park,film,Samuel L. Jackson`;
 
+interface Items {
+	  name?: string;
+    alias?: string;
+    title?: string;
+    media?: string;
+}
+
 
 let data;
 
-function csvToJson(csv: string) {
-    // Split the input into lines
-    let lines = csv.split('\n');
-  
-    // Extract headers
-    let headers = lines[0].split(',').map(header => header.trim());
-  
-    // Remove the headers from the lines array
-    lines.shift();
-  
-    // Map the remaining lines into objects
-    let jsonResult = lines.map(line => {
-      // Split the line into values, trim each value
-      let values = line.split(',').map(value => value.trim());
-  
-      // Create an object for the line
-      let obj = headers.reduce((accumulator, header, index) => {
-        // Remove quotes from the value if present
-      //   let cleanValue = values[index].replace(/^"|"$/g, '');
-        accumulator[header] = values[index];
-        return accumulator;
-      }, {});
-  
-      return obj;
+function csvToJson(csv: string): string {
+  const lines = csv.split('\n');
+  const headers = lines[0].split(',').map(header => header.trim());
+  lines.shift(); // Remove headers
+  lines.pop();
+  const jsonResult = lines.map(line => {
+    const values = line.split(',').map(value => value.trim());
+    const obj: Record<string, string> = {};
+
+    headers.forEach((header, index) => {
+      // const cleanValue = values[index].replace(/^"|"$/g, ''); // Remove quotes
+      obj[header] = values[index];
     });
-  
-    // Filter out any empty lines
-    jsonResult = jsonResult.filter(line => Object.keys(line).length > 0);
-  
-    // Convert the result to a JSON string
-    return JSON.stringify(jsonResult);
-  }
+
+    return obj;
+  });
+
+  // Filter out any empty lines
+  const filteredJsonResult = jsonResult.filter(line => Object.keys(line).length > 0);
+
+  // Convert the result to a JSON string
+  return JSON.stringify(filteredJsonResult); // Pretty-print with 2 spaces
+}
+
+
 
   try {
     let result = await fetch("https://raw.githubusercontent.com/tobiaswright/black-programmers-in-film-and-television/master/list-of-characters.csv")
@@ -80,9 +80,9 @@ function csvToJson(csv: string) {
     }
   } catch(e) {
     data = cachedData;
-    console.log("cachedData");
     console.log(e)
   }
 
+  export let items = JSON.parse(csvToJson(data as string));
 
-  export let items = JSON.parse(csvToJson(data as string))
+  // console.log(items)
