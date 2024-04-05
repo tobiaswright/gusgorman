@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import List from '../components/List.astro';
-import items from '../data/data.json';
-import type About from './about.astro';
+// import itemCache from '../data/data.json';
+import { items } from '../components/Data';
+
 
 export interface Props {
     items: [Items]
@@ -19,7 +20,7 @@ interface Items {
     charName: string;
 }
 
-//sort by ascending
+// sort by ascending
 items.sort((a, b) => {
 	let nameA = a.alias ? a.alias!.toLowerCase() : a.name!.toLowerCase();
 	let nameB = b.alias ? b.alias!.toLowerCase() : b.name!.toLowerCase();
