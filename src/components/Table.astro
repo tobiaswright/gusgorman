@@ -1,10 +1,10 @@
 ---
 const { alias, name, title, media, actor } = Astro.props;
 ---
-<tr>
-    <td>{name}</td>
+<tr class="p-8 even:bg-slate-900">
+    <td class="w-48 pl-4">{name}</td>
     <td>{alias}</td>
-    <td>{title}</td>
-    <td>{media}</td>
+    <td class="w-48">{title}</td>
+    <td class="py-4">{media}</td>
     <td>{actor}</td>
 </tr>

@@ -6,16 +6,16 @@ import items from '../data/data.json';
 
 <Layout title="Welcome to GusGorman.com" page="table">
 
-    <p>The source data can be found on <a href="https://github.com/tobiaswright/black-programmers-in-film-and-television">github</a> in CVS format.</p>
+    <p class="pb-8">The source data can be found on <a href="https://github.com/tobiaswright/black-programmers-in-film-and-television">github</a> in CVS format.</p>
 
-    <table class="mt-10 w-full">
-        <tr class="text-left">
-            <th>Name</th>
+    <table class="w-full">
+        <thead class="text-left">
+            <th class="pl-4">Name</th>
             <th>Alias</th>
             <th>Title</th>
             <th>Media</th>
             <th>Actor</th>
-        </tr>
+        </thead>
 		{items.map((item) => (
 			<TableData {...item} />
 		))}
