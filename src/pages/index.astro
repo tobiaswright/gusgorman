@@ -5,21 +5,6 @@ import List from '../components/List.astro';
 import { items } from '../components/Data';
 
 
-export interface Props {
-    items: [Items]
-}
-
-interface Items {
-	name?: string;
-    alias?: string;
-    title: string;
-    media: string;
-    actor: string;
-    id: string; 
-    imageSrc: string;
-    charName: string;
-}
-
 // sort by ascending
 items.sort((a, b) => {
 	let nameA = a.alias ? a.alias!.toLowerCase() : a.name!.toLowerCase();
