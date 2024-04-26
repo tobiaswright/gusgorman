@@ -61,6 +61,14 @@ function csvToJson(csv: string): string {
   // Filter out any empty lines
   const filteredJsonResult = jsonResult.filter(line => Object.keys(line).length > 0);
 
+  // Sort by ascending
+  filteredJsonResult.sort((a, b) => {
+    let nameA = a.alias ? a.alias!.toLowerCase() : a.name!.toLowerCase();
+    let nameB = b.alias ? b.alias!.toLowerCase() : b.name!.toLowerCase();
+  
+    return nameA.localeCompare(nameB)
+  })
+
   // Convert the result to a JSON string
   return JSON.stringify(filteredJsonResult); // Pretty-print with 2 spaces
 }

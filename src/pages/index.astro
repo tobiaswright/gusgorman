@@ -2,15 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import List from '../components/List.astro';
 import { items } from '../components/Data';
-
-
-// sort by ascending
-items.sort((a, b) => {
-	let nameA = a.alias ? a.alias!.toLowerCase() : a.name!.toLowerCase();
-	let nameB = b.alias ? b.alias!.toLowerCase() : b.name!.toLowerCase();
-
-	return nameA.localeCompare(nameB)
-})
 ---
 
 <Layout title="Welcome to GusGorman.com" page="home">
@@ -35,11 +26,12 @@ items.sort((a, b) => {
 
 	const sortButton = document.querySelector("button");
 	const list = document.querySelector("#list") as HTMLInputElement;
-	let showDefault = true;
+	const tempDescList = document.querySelector("#desc") as HTMLInputElement;
+
 	const acsList = list.innerHTML
-	const tempDescList = document.querySelector("#desc") as HTMLInputElement
-	const descList = tempDescList.innerHTML
-	// let template = document.getElementsByTagName("template");
+	const descList = tempDescList.innerHTML	
+
+	let showDefault = true;
 
 	sortButton?.addEventListener("click", ()=>{
 		let listToDisplay = (!showDefault) ?  acsList : descList;
