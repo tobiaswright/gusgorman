@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import List from '../components/List.astro';
-import { items } from '../components/Data';
+import { getItems } from '../components/Data';
+
+let items = getItems();
 ---
 
 <Layout title="Welcome to GusGorman.com" page="home">

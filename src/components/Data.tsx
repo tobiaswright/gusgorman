@@ -38,7 +38,6 @@ interface Items {
     media?: string;
 }
 
-
 let data;
 
 function csvToJson(csv: string): string {
@@ -91,6 +90,8 @@ function csvToJson(csv: string): string {
     console.log(e)
   }
 
-  export let items = JSON.parse(csvToJson(data as string));
+  export let getItems = () => {
+     return JSON.parse(csvToJson(data as string));
+  }
 
   // console.log(items)

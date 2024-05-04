@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import TableData from '../components/Table.astro'
-import items from '../data/data.json';
+import { getItems } from '../components/Data';
+
+let items = getItems();
 ---
 
 <Layout title="Welcome to GusGorman.com" page="table">
@@ -16,8 +18,8 @@ import items from '../data/data.json';
             <th>Media</th>
             <th>Actor</th>
         </thead>
-		{items.map((item) => (
-			<TableData {...item} />
+		{items.map((item: any) => (
+			<TableData {item} />
 		))}
 		
 	</table>
