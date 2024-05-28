@@ -2,7 +2,7 @@
 const { name, title, media, actor, charName, imageSrc } = Astro.props;
 ---
 
-<img class="w-auto" src={imageSrc} id={charName} alt=`{charName} in {title}` />
+<img class="w-full h-full" src={imageSrc} id={charName} alt=`{charName} in {title}` />
 <h3 class="text-lg">{charName} in {title}</h3>
 <ul>
   {name && name !== charName && <li class="text-sm">Name: {name}</li>}

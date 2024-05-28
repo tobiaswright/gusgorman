@@ -30,14 +30,14 @@ if ( page === "about") {
 
 		<title>{title}</title>
 	</head>
-	<body class="bg-black text-white">
+	<body class="bg-black text-white p">
 		<header class="bg-[url('./../images/ggheader.png')] mb-5">
-			<div class="container mx-auto max-w-4xl pt-10 pb-5">
+			<div class="container mx-auto pt-10 pb-5 max-w-5xl">
 				<h1 class="text-3xl ">Welcome to GusGorman.com</h1>
 				<h2 class="text-2xl mb-5">A list of black programmers, hackers and computer specialist in film and television.</h2>
 			</div>
 		</header>
-		<main class="container mx-auto mb-20 max-w-4xl">			
+		<main class="container mx-auto max-w-5xl">			
 			<ul class="divide-x mb-10">
 				<li class="inline pr-3 "><a class={home} href="../">Home</a></li>
 				<li class="inline px-3"><a class={table} href="../table">View as Table</a></li>
@@ -45,7 +45,7 @@ if ( page === "about") {
 			</ul>
 
 			<slot />
-			<footer class="mt-20">
+			<footer class="mt-20 max-w-5xl">
 				<p class="text-sm">Hi, I'm <a href="http://www.tobiaswright.com">Tobias Wright</a>, a solutions architect. This page is built with <a href="https://astro.build/">Astro</a> and hosted on <a href="https://github.com/tobiaswright/gusgorman">Github</a>.</p>
 			</footer>
 		</main>	
