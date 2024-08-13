@@ -31,16 +31,9 @@ Leslie,Nine Ball,Ocean's 8,film,Rihanna
 Bernard Lowe,,Westworld,television,Jeffrey Wright
 John Raymond 'Ray' Arnold,,Jurrasic Park,film,Samuel L. Jackson`;
 
-interface Items {
-	  name?: string;
-    alias?: string;
-    title?: string;
-    media?: string;
-}
-
 let data;
 
-function csvToJson(csv: string): string {
+function csvToJson(csv: string) {
   const lines = csv.split('\n');
   const headers = lines[0].split(',').map(header => header.trim());
   lines.shift(); // Remove headers
@@ -69,10 +62,8 @@ function csvToJson(csv: string): string {
   })
 
   // Convert the result to a JSON string
-  return JSON.stringify(filteredJsonResult); // Pretty-print with 2 spaces
+  return filteredJsonResult; // Pretty-print with 2 spaces
 }
-
-
 
   try {
     let result = await fetch("https://raw.githubusercontent.com/tobiaswright/black-programmers-in-film-and-television/master/list-of-characters.csv")
@@ -91,7 +82,5 @@ function csvToJson(csv: string): string {
   }
 
   export let getItems = () => {
-     return JSON.parse(csvToJson(data as string));
+     return csvToJson(data);
   }
-
-  // console.log(items)

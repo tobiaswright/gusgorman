@@ -1,62 +1,80 @@
 ---
 interface Items {
-	name?: string;
-    alias?: string;
+	name: string;
+    alias: string;
     title: string;
     media: string;
-    actor: string;
-    id: string; 
-    imageSrc?: string;
-    charName?: string;
+    actor: string; 
+}
+
+interface ListItems extends Items {
+    imgSrc: string
+    isSpoiler: boolean
 }
 
 import Card from '../components/Card.astro';
 
 const { items } = Astro.props;
 
-let images = await Astro.glob("../../public/images/*").then(files => {
+const spoilerAlert = [
+  'Aech',
+  'Black Panther'
+]
+
+const images = await Astro.glob("../../public/images/*").then(files => {
         return files.map(file => file.default)
 })
 
 
-let transformName = (name: string): string => {
+const makeURLNameFriendly = (name: string): string => {
   return name.split(" ").join("-").toLowerCase();
 };
 
-let getImage = (id: string) => {
-    for (let image of images) {
-        if (image.src.includes(id)) return "./images/"+id+".jpg";
-    }
-    return "./images/placeholder.jpg";
-}
+const getImageURL = (item: Items) => {
+    let fname
 
-let returnPayload = (charName: string) => {
-  let id = transformName(charName);
-  let imageSrc = getImage(id);
-  return { id, imageSrc, charName };
+    if (item.alias) {
+        fname = makeURLNameFriendly(item.alias);
+    } else if (item.name) {
+        fname = makeURLNameFriendly(item.name);
+    }
+  
+    for (let image of images) {
+        if (image.src.includes(fname)) return "./images/"+fname+".jpg";
+    }
+
+    return "./images/placeholder.jpg";;
 };
 
-let getItems =  (items:[Items]) => {
-    items.forEach(  (item: Items) => {
-        let temp;
-        if (item.alias) {
-            temp =  returnPayload(item.alias);
-        } else if (item.name) {
-            temp = returnPayload(item.name);
-        }
-        item["imageSrc"] = temp?.imageSrc
-        item["charName"] =temp?.charName 
-    })
+let getItems = ( items:Items[] ):ListItems[] => {
+    let ary: ListItems[] = [];
+    let obj = {}
 
-    return items
+    items.forEach(  (item: Items) => {
+        let imgSrc = getImageURL(item);
+        let isSpoiled = false
+
+        spoilerAlert.forEach( (spoiled)=> {
+            if (item.alias === spoiled) {
+                isSpoiled = true
+            }
+        })
+
+        obj = {...item, imgSrc: imgSrc, isSpoiler: isSpoiled}
+
+        ary.push(obj as ListItems);
+
+
+    });
+
+    return ary
 }
 
 let cards = getItems(items);
 
-
 ---
 <ul id="list">
-    {cards.map( (card: Items) => (
+    {cards.map( (card) => (
         <li class="mb-10"><Card {...card} /></li>
     ))}
 </ul>

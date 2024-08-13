@@ -24,43 +24,39 @@ if ( page === "about") {
 		<meta name="generator" content={Astro.generator} />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
 		<title>{title}</title>
 	</head>
 	<body class="bg-black text-white p">
+
+
 		<header class="mb-5">
 			<div class="container mx-auto pt-10 pb-5 max-w-5xl">
-				<h1 class="text-5xl ">Welcome to GusGorman.com</h1>
-				<h2 class="text-2xl mb-5">A list of black programmers, hackers and computer specialist in film and television.</h2>
+				<h1 class="font-['Saira'] font-extrabold text-5xl text-center">Welcome to GusGorman.com</h1>
+				<h2 class="text-2xl mb-5 text-center">A list of black programmers, hackers and computer specialist in film and television.</h2>
 			</div>
 		</header>
+
+
+
 		<main class="container mx-auto max-w-5xl">			
-			<ul class="divide-x mb-10">
+			<ul class="divide-x mb-10 text-center">
 				<li class="inline pr-3 "><a class={home} href="../">Home</a></li>
 				<li class="inline px-3"><a class={table} href="../table">View as Table</a></li>
 				<l1 class="inlinep pl-3"><a class={about} href="../about">About GusGorman.com</a></l1>
 			</ul>
+	
 
 			<slot />
-			<footer class="mt-20 max-w-5xl">
-				<p class="text-sm">Hi, I'm <a href="http://www.tobiaswright.com">Tobias Wright</a>, a solutions architect. This page is built with <a href="https://astro.build/">Astro</a> and hosted on <a href="https://github.com/tobiaswright/gusgorman">Github</a>.</p>
+
+
+			<footer class="my-20 max-w-5xl">
+				<p class="text-sm">Hi, I'm <a class="text-sky-50 hover:text-yellow-100 underline" href="http://www.tobiaswright.com">Tobias Wright</a>, a solutions architect. This page is built with <a href="https://astro.build/">Astro</a> and hosted on <a href="https://github.com/tobiaswright/gusgorman">Github</a>.</p>
 			</footer>
+
 		</main>	
 	</body>
 </html>
-
-<style is:global>
-	p a { @apply text-sky-50 underline hover:text-yellow-100 underline}
-
-	h1 {
-  font-family: "Saira", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 800;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
-}
-</style>
