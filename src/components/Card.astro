@@ -1,17 +1,51 @@
 ---
-const { name, alias, title, media, actor, imgSrc } = Astro.props;
----
+const { name, alias, title, media, actor, imgSrc, isSpoiler} = Astro.props;
 
-<img
-  class="w-full h-full"
-  src={imgSrc}
-  alt=`{charName} in {title}`
-/>
-{alias ?
-  <h3 class="text-lg"> {alias} in {title}</h3>:<h3 class="text-lg"> {name} in {title}</h3>
+let SpoilerImages
+
+if (isSpoiler) {
+  SpoilerImages =  '<img class="w-full h-full" src="./images/placeholder.jpg"/>'
+  SpoilerImages += '<img class="w-full h-full hidden" src="' + imgSrc + '" />'
+} else {
+  SpoilerImages = '<img class="w-full h-full" src="' + imgSrc + '" />'
 }
-<ul>
-  {alias && name && <li class="text-sm">Name: {name}</li>}
-  <li class="text-sm">Media: {media}</li>
-  <li class="text-sm">Portrayed by: {actor}</li>
-</ul>
+
+---
+<div class:list={[ {'spoiler': isSpoiler} ]}>
+
+  <Fragment set:html={SpoilerImages} />
+
+  <h3 class="text-lg">
+  {alias ? alias +" in "+ title: name +" in "+ title}
+  </h3>
+
+  <ul>
+    {alias && name && <li class="text-sm">Name: {name}</li>}
+    <li class="text-sm">Media: {media}</li>
+    <li class="text-sm">Portrayed by: {actor}</li>
+  </ul>
+
+</div>
+
+
+<script>
+	const spoilerCard = document.querySelectorAll(".spoiler");
+
+  spoilerCard.forEach( spoilt => {
+      spoilt.addEventListener( "click", (event)=> {
+        const children = event.currentTarget?.getElementsByTagName('img');
+        spoilt.classList.remove('spoiler');
+
+        for (let child of children) {
+          child.classList.toggle('hidden');
+        }
+      })
+    })
+</script>
+
+<style>
+  .spoiler ul,
+  .spoiler h3 {
+    @apply blur-sm
+  }
+</style>

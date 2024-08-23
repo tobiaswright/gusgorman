@@ -12,13 +12,18 @@ interface ListItems extends Items {
     isSpoiler: boolean
 }
 
+import { idText } from 'typescript';
 import Card from '../components/Card.astro';
 
 const { items } = Astro.props;
 
 const spoilerAlert = [
   'Aech',
-  'Black Panther'
+  'Black Panther',
+  'Steve',
+  'Ramsey',
+  'Latrell Walker'
+
 ]
 
 const images = await Astro.glob("../../public/images/*").then(files => {
@@ -47,20 +52,25 @@ const getImageURL = (item: Items) => {
 };
 
 let getItems = ( items:Items[] ):ListItems[] => {
-    let ary: ListItems[] = [];
+    const ary: ListItems[] = [];
     let obj = {}
 
     items.forEach(  (item: Items) => {
-        let imgSrc = getImageURL(item);
-        let isSpoiled = false
+        const imgSrc = getImageURL(item);
+        let isSpoiled = false;
+
 
         spoilerAlert.forEach( (spoiled)=> {
-            if (item.alias === spoiled) {
+            if (item.alias === spoiled || item.name === spoiled ) {
                 isSpoiled = true
             }
         })
 
-        obj = {...item, imgSrc: imgSrc, isSpoiler: isSpoiled}
+        obj = {
+            ...item,
+            imgSrc: imgSrc,
+            isSpoiler: isSpoiled,
+        }
 
         ary.push(obj as ListItems);
 
@@ -74,7 +84,10 @@ let cards = getItems(items);
 
 ---
 <ul id="list">
+
     {cards.map( (card) => (
-        <li class="mb-10"><Card {...card} /></li>
+        <li class="mb-10">
+            <Card {...card} />
+        </li>
     ))}
 </ul>
