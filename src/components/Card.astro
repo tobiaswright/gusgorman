@@ -4,14 +4,18 @@ const { name, alias, title, media, actor, imgSrc, isSpoiler} = Astro.props;
 let SpoilerImages
 
 if (isSpoiler) {
-  SpoilerImages =  '<img class="w-full h-full" src="./images/placeholder.jpg"/>'
+  SpoilerImages =  `
+    <div class="w-full h-[512px] content-center text-center" style="background-image: url(\'./images/spoilerAlertBkg.png\')">
+    <h3 class="text-4xl text-red-700 font-black">&lt;Spoiler Alert&gt;</h3>
+    <p class="text-black">Click to reveal a possible spoiler
+    </div>`
   SpoilerImages += '<img class="w-full h-full hidden" src="' + imgSrc + '" />'
 } else {
   SpoilerImages = '<img class="w-full h-full" src="' + imgSrc + '" />'
 }
 
 ---
-<div class:list={[ {'spoiler': isSpoiler} ]}>
+<div  class:list={[ {'spoiler': isSpoiler} ]}>
 
   <Fragment set:html={SpoilerImages} />
 
@@ -33,14 +37,15 @@ if (isSpoiler) {
 
   spoilerCard.forEach( spoilt => {
       spoilt.addEventListener( "click", (event)=> {
-        const children = event.currentTarget?.getElementsByTagName('img');
-        spoilt.classList.remove('spoiler');
+        const currentTarget = event.currentTarget
+        const childImg = currentTarget?.getElementsByTagName('img');
+        const childDiv = currentTarget?.getElementsByTagName('div');
 
-        for (let child of children) {
-          child.classList.toggle('hidden');
-        }
-      })
+        currentTarget?.classList.remove('spoiler');
+        childImg[0].classList.toggle('hidden');
+        childDiv[0].classList.toggle('hidden');
     })
+  })
 </script>
 
 <style>

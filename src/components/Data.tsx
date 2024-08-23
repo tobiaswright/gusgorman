@@ -33,6 +33,15 @@ John Raymond 'Ray' Arnold,,Jurrasic Park,film,Samuel L. Jackson`;
 
 let data;
 
+interface Items {
+	name: string;
+    alias: string;
+    title: string;
+    media: string;
+    actor: string; 
+}
+
+
 function csvToJson(csv: string) {
   const lines = csv.split('\n');
   const headers = lines[0].split(',').map(header => header.trim());
@@ -47,7 +56,7 @@ function csvToJson(csv: string) {
       obj[header] = values[index];
     });
 
-    return obj;
+    return obj as unknown as Items;
   });
 
   // Filter out any empty lines
@@ -81,6 +90,6 @@ function csvToJson(csv: string) {
     console.log(e)
   }
 
-  export let getItems = () => {
+  export let getList = () => {
      return csvToJson(data);
   }

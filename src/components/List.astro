@@ -12,10 +12,11 @@ interface ListItems extends Items {
     isSpoiler: boolean
 }
 
-import { idText } from 'typescript';
 import Card from '../components/Card.astro';
+import { getList } from './Data';
 
-const { items } = Astro.props;
+let items = getList();
+
 
 const spoilerAlert = [
   'Aech',
@@ -23,7 +24,6 @@ const spoilerAlert = [
   'Steve',
   'Ramsey',
   'Latrell Walker'
-
 ]
 
 const images = await Astro.glob("../../public/images/*").then(files => {
