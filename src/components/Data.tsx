@@ -16,7 +16,7 @@ Luthor Stickell,,Mission: Impossible,film,Ving Rhames
 ,Niobe,The Matrix,film,Jada Pinkett Smith
 Ramsey,,Fast and Furious,film,Nathalie Emmanuel
 Riley Davis,,McGyver,television,Tristin Mays
-Shuri,Black Panther,Black Panther,film,Letitia Wright
+Shuri,Black Panther,Black Panther: Wakanda Forever,film,Letitia Wright
 Steve,,Office Space,film,Orlando Jones
 ,Tank,The Matrix,film,Marcus Chong
 Theo,,Die Hard,film,Clarence Gilyar
@@ -29,7 +29,8 @@ Riri Williams,Iron Heart,Black Panther: Wakanda Forever,film,Dominique Thorne
 Richmond Valentine,,Kingsman: The Secret Service,film,Samuel L. Jackson
 Leslie,Nine Ball,Ocean's 8,film,Rihanna
 Bernard Lowe,,Westworld,television,Jeffrey Wright
-John Raymond 'Ray' Arnold,,Jurrasic Park,film,Samuel L. Jackson`;
+John Raymond Arnold,Ray Arnold,Jurrasic Park,film,Samuel L. Jackson
+Margo Kess,Spider-Byte,Spider-Man: Across the Spider-Verse,film,Amandla Stenberg`;
 
 let data;
 
