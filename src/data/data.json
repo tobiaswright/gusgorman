@@ -8,12 +8,14 @@
   },
   {
     "name": "Alec Hardison",
+    "alias": "",
     "title": "Leverage",
     "media": "television",
     "actor": "Aldis Hodge"
   },
   {
     "name": "Brody Nelson",
+    "alias": "",
     "title": "CSI: Cyber",
     "media": "television",
     "actor": "Shad Moss"
@@ -27,17 +29,20 @@
   },
   {
     "name": "Glen Whitmann",
+    "alias": "",
     "title": "Transformers",
     "media": "film",
     "actor": "Anthony Anderson"
   },
   {
     "name": "Gus Gorman",
+    "alias": "",
     "title": "Superman III",
     "media": "film",
     "actor": "Richard Pryor"
   },
   {
+    "name": "",
     "alias": "Hush",
     "title": "Escape Plan",
     "media": "film",
@@ -52,6 +57,7 @@
   },
   {
     "name": "Leslie Romero",
+    "alias": "",
     "title": "Mr. Robot",
     "media": "television",
     "actor": "Ron Cephas Jones"
@@ -72,23 +78,27 @@
   },
   {
     "name": "Lucius Fox",
+    "alias": "",
     "title": "Batman Returns",
     "media": "film",
     "actor": "Morgan Freeman"
   },
   {
     "name": "Luthor Stickell",
+    "alias": "",
     "title": "Mission: Impossible",
     "media": "film",
     "actor": "Ving Rhames"
   },
   {
+    "name": "",
     "alias": "Morpheus",
     "title": "The Matrix",
     "media": "film",
     "actor": "Laurence Fishburne"
   },
   {
+    "name": "",
     "alias": "Niobe",
     "title": "The Matrix",
     "media": "film",
@@ -96,12 +106,14 @@
   },
   {
     "name": "Ramsey",
+    "alias": "",
     "title": "Fast and Furious",
     "media": "film",
     "actor": "Nathalie Emmanuel"
   },
   {
     "name": "Riley Davis",
+    "alias": "",
     "title": "McGyver",
     "media": "television",
     "actor": "Tristin Mays"
@@ -109,17 +121,19 @@
   {
     "name": "Shuri",
     "alias": "Black Panther",
-    "title": "Black Panther, Black Panther 2: Wakanda Forever",
+    "title": "Black Panther: Wakanda Forever",
     "media": "film",
     "actor": "Letitia Wright"
   },
   {
     "name": "Steve",
+    "alias": "",
     "title": "Office Space",
     "media": "film",
     "actor": "Orlando Jones"
   },
   {
+    "name": "",
     "alias": "Tank",
     "title": "The Matrix",
     "media": "film",
@@ -127,11 +141,13 @@
   },
   {
     "name": "Theo",
+    "alias": "",
     "title": "Die Hard",
     "media": "film",
     "actor": "Clarence Gilyar"
   },
   {
+    "name": "",
     "alias": "Link",
     "title": "The Matrix",
     "media": "film",
@@ -139,12 +155,14 @@
   },
   {
     "name": "Miles Dyson",
+    "alias": "",
     "title": "Terminator 2",
     "media": "film",
     "actor": "Joe Morton"
   },
   {
     "name": "Sticky Webb",
+    "alias": "",
     "title": "The Proud Family",
     "media": "television",
     "actor": "Orlando Brown"
@@ -158,6 +176,7 @@
   },
   {
     "name": "Breanna Casey",
+    "alias": "",
     "title": "Leverage: Redemption",
     "media": "television",
     "actor": "Aleyse Shannon"
@@ -171,6 +190,7 @@
   },
   {
     "name": "Richmond Valentine",
+    "alias": "",
     "title": "Kingsman: The Secret Service",
     "media": "film",
     "actor": "Samuel L. Jackson"
@@ -184,6 +204,7 @@
   },
   {
     "name": "Bernard Lowe",
+    "alias": "",
     "title": "Westworld",
     "media": "television",
     "actor": "Jeffrey Wright"
@@ -194,5 +215,26 @@
     "title": "Jurrasic Park",
     "media": "film",
     "actor": "Samuel L. Jackson"
+  },
+  {
+    "name": "Margo Kess",
+    "alias": "Spider-Byte",
+    "title": "Spider-Man: Across the Spider-Verse",
+    "media": "film",
+    "actor": "Amandla Stenberg"
+  },
+  {
+    "name": "",
+    "alias": "Slug",
+    "title": "Ironheart",
+    "media": "television",
+    "actor": "Shea Couleé"
+  },
+  {
+    "name": "Stuart Clarke",
+    "alias": "Rampage",
+    "title": "Ironheart",
+    "media": "television",
+    "actor": "Eric André"
   }
 ]
